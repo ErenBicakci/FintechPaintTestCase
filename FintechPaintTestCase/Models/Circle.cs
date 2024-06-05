@@ -8,6 +8,10 @@ namespace FintechPaintTestCase.Models
 {
     internal class Circle : Shape
     {
+        public Circle(Color color) 
+        {
+            this.setColor(color);        
+        }
         public override void draw(PaintEventArgs e)
         {
             throw new NotImplementedException();

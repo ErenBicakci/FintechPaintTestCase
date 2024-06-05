@@ -8,6 +8,11 @@ namespace FintechPaintTestCase.Models
 {
     internal class Square : Shape
     {
+
+        public Square(Color color)
+        {
+            this.setColor(color);
+        }
         public override void draw(PaintEventArgs e)
         {
             throw new NotImplementedException();

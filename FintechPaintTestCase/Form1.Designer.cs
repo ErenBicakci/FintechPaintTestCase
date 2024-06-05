@@ -190,6 +190,7 @@
             whitePB.Size = new Size(55, 55);
             whitePB.TabIndex = 8;
             whitePB.TabStop = false;
+            whitePB.Click += clickColorPB;
             // 
             // brownPB
             // 
@@ -199,6 +200,7 @@
             brownPB.Size = new Size(55, 55);
             brownPB.TabIndex = 7;
             brownPB.TabStop = false;
+            brownPB.Click += clickColorPB;
             // 
             // purplePB
             // 
@@ -208,6 +210,7 @@
             purplePB.Size = new Size(55, 55);
             purplePB.TabIndex = 6;
             purplePB.TabStop = false;
+            purplePB.Click += clickColorPB;
             // 
             // yellowPB
             // 
@@ -217,6 +220,7 @@
             yellowPB.Size = new Size(55, 55);
             yellowPB.TabIndex = 5;
             yellowPB.TabStop = false;
+            yellowPB.Click += clickColorPB;
             // 
             // blackPB
             // 
@@ -226,6 +230,7 @@
             blackPB.Size = new Size(55, 55);
             blackPB.TabIndex = 4;
             blackPB.TabStop = false;
+            blackPB.Click += clickColorPB;
             // 
             // orangePB
             // 
@@ -235,6 +240,7 @@
             orangePB.Size = new Size(55, 55);
             orangePB.TabIndex = 3;
             orangePB.TabStop = false;
+            orangePB.Click += clickColorPB;
             // 
             // greenPB
             // 
@@ -244,6 +250,7 @@
             greenPB.Size = new Size(55, 55);
             greenPB.TabIndex = 2;
             greenPB.TabStop = false;
+            greenPB.Click += clickColorPB;
             // 
             // bluePB
             // 
@@ -253,6 +260,7 @@
             bluePB.Size = new Size(55, 55);
             bluePB.TabIndex = 1;
             bluePB.TabStop = false;
+            bluePB.Click += clickColorPB;
             // 
             // redPB
             // 
@@ -262,6 +270,7 @@
             redPB.Size = new Size(55, 55);
             redPB.TabIndex = 0;
             redPB.TabStop = false;
+            redPB.Click += clickColorPB;
             // 
             // shapeGroupBox
             // 
@@ -285,6 +294,7 @@
             hexagonPB.SizeMode = PictureBoxSizeMode.StretchImage;
             hexagonPB.TabIndex = 3;
             hexagonPB.TabStop = false;
+            hexagonPB.Click += clickShapePB;
             // 
             // circlePB
             // 
@@ -295,6 +305,7 @@
             circlePB.SizeMode = PictureBoxSizeMode.StretchImage;
             circlePB.TabIndex = 2;
             circlePB.TabStop = false;
+            circlePB.Click += clickShapePB;
             // 
             // trianglePB
             // 
@@ -305,6 +316,7 @@
             trianglePB.SizeMode = PictureBoxSizeMode.StretchImage;
             trianglePB.TabIndex = 1;
             trianglePB.TabStop = false;
+            trianglePB.Click += clickShapePB;
             // 
             // squarePB
             // 
@@ -315,6 +327,7 @@
             squarePB.SizeMode = PictureBoxSizeMode.StretchImage;
             squarePB.TabIndex = 0;
             squarePB.TabStop = false;
+            squarePB.Click += clickShapePB;
             // 
             // panel1
             // 
@@ -323,6 +336,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1073, 622);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // Form1
             // 

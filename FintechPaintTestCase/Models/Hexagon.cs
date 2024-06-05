@@ -8,6 +8,11 @@ namespace FintechPaintTestCase.Models
 {
     internal class Hexagon : Shape
     {
+
+        public Hexagon(Color color)
+        {
+            this.setColor(color);
+        }
         public override void draw(PaintEventArgs e)
         {
             throw new NotImplementedException();

@@ -8,6 +8,11 @@ namespace FintechPaintTestCase.Models
 {
     internal class Triangle : Shape
     {
+
+        public Triangle(Color color)
+        {
+            this.setColor(color);
+        }
         public override void draw(PaintEventArgs e)
         {
             throw new NotImplementedException();
