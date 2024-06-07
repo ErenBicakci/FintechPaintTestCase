@@ -13,8 +13,21 @@ namespace FintechPaintTestCase.Models
         public Hexagon(Color color)
         {
             this.setColor(color);
-            this.name = "Hexagon";
+            this.name = "hexagon";
             hexagonPoints = new Point[6];
+        }
+
+        public Hexagon(Color color, int x, int y, int height, int width,bool isSelected)
+        {
+            this.setColor(color);
+            this.shapeX = x;
+            this.shapeY = y;
+            this.shapeWidth = width;
+            this.shapeHeight = height;
+            this.isSelected = isSelected;
+            this.name = "hexagon";
+            hexagonPoints = new Point[6];
+            drawingObjectConfig();
         }
         public override void draw(PaintEventArgs e)
         {
@@ -58,7 +71,7 @@ namespace FintechPaintTestCase.Models
                 double angle_deg = 60 * i - 30;
                 double angle_rad = Math.PI / 180 * angle_deg;
                 hexagonPoints[i].X = (int)(shapeX + (shapeWidth / 2) + shapeWidth / 2 * Math.Cos(angle_rad));
-                hexagonPoints[i].Y = (int)(shapeY + (shapeWidth / 2) + shapeWidth / 2 * Math.Sin(angle_rad));
+                hexagonPoints[i].Y = (int)(shapeY + (shapeHeight / 2) + shapeHeight / 2 * Math.Sin(angle_rad));
 
             }
         }

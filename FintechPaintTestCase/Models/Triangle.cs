@@ -14,9 +14,21 @@ namespace FintechPaintTestCase.Models
         {
             trianglePoints = new Point[3];
             setColor(color);
-            this.name = "Triangle";
+            this.name = "triangle";
         }
 
+        public Triangle(Color color, int x, int y, int height, int width,bool isSelected)
+        {
+            this.setColor(color);
+            this.shapeX = x;
+            this.shapeY = y;
+            this.shapeWidth = width;
+            this.shapeHeight = height;
+            this.isSelected = isSelected;
+            this.name = "triangle";
+            trianglePoints = new Point[3];
+            drawingObjectConfig();
+        }
         public override void draw(PaintEventArgs e)
         {
             if (isSelected)
@@ -58,8 +70,8 @@ namespace FintechPaintTestCase.Models
             trianglePoints[2].X = shapeX + shapeWidth;
 
             trianglePoints[0].Y = shapeY;
-            trianglePoints[1].Y = shapeY + shapeWidth;
-            trianglePoints[2].Y = shapeY + shapeWidth;
+            trianglePoints[1].Y = shapeY + shapeHeight;
+            trianglePoints[2].Y = shapeY + shapeHeight;
         }
 
         public override void mouseMoveSelect(MouseEventArgs e)

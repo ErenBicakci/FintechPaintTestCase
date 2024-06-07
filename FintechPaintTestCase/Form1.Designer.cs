@@ -110,6 +110,7 @@
             uploadPB.SizeMode = PictureBoxSizeMode.StretchImage;
             uploadPB.TabIndex = 4;
             uploadPB.TabStop = false;
+            uploadPB.Click += uploadPB_Click;
             // 
             // savePB
             // 
@@ -120,6 +121,7 @@
             savePB.SizeMode = PictureBoxSizeMode.StretchImage;
             savePB.TabIndex = 3;
             savePB.TabStop = false;
+            savePB.Click += savePB_Click;
             // 
             // groupBox2
             // 

@@ -10,7 +10,20 @@ namespace FintechPaintTestCase.Models
         {
             this.setColor(color);
             rectangle = new Rectangle();
-            this.name = "Square";
+            this.name = "square";
+        }
+
+        public Square(Color color, int x, int y, int height, int width,bool isSelected)
+        {
+            this.setColor(color);
+            this.shapeX = x;
+            this.shapeY = y;
+            this.shapeWidth = width;
+            this.shapeHeight = height;
+            this.name = "square";
+            this.isSelected = isSelected;
+            rectangle = new Rectangle();
+            drawingObjectConfig();
         }
         public override void draw(PaintEventArgs e)
         {

@@ -30,6 +30,10 @@ namespace FintechCase
 
         public Shape getLastShape()
         {
+            if (lastSelectedShapePB == null)
+            {
+                return null;
+            }
 
             switch (lastSelectedShapePB.Name)
             {
@@ -59,12 +63,13 @@ namespace FintechCase
                 selectPB.Invalidate();
                 selectPB.Refresh();
             }
-            if (lastSelectedShapePB != null)
+            foreach (var shapePictureBox in shapePictureBoxs)
             {
-                lastSelectedShapePB.Invalidate();
-                lastSelectedShapePB.Refresh();
-                lastSelectedShapePB = null;
+                shapePictureBox.Invalidate();
+                shapePictureBox.Refresh();
             }
+            lastSelectedShapePB = null;
+
         }
 
         public void selectShape(string pictureBoxName)
@@ -99,6 +104,17 @@ namespace FintechCase
             removePreviousMenuSelections();
             selectPBStatus = true;
             drawBorder(selectPB);
+        }
+
+
+        public void setPBsSelectedShape(Shape shape)
+        {
+            clickSelectionPictureBox();
+            selectColor(shape.getColor().Name.ToLower() + "PB");
+            drawBorder(findShapePictureBoxByName(shape.name + "PB"));
+            findShapePictureBoxByName(shape.name);
+
+
         }
 
 

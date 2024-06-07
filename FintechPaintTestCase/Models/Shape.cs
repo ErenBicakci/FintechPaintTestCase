@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -110,6 +111,19 @@ namespace FintechPaintTestCase.Models
                 distance = Math.Abs(this.getStartPoint().Y - y);
             }
             return distance;
-        } 
+        }
+
+        public JsonObject getJSONInfos()
+        {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.Add("Name", name);
+            jsonObject.Add("X", shapeX);
+            jsonObject.Add("Y", shapeY);
+            jsonObject.Add("Height", shapeHeight);
+            jsonObject.Add("Width", shapeWidth);
+            jsonObject.Add("Color", color.Name);
+            jsonObject.Add("isSelected",isSelected);
+            return jsonObject;
+        }
     }
 }

@@ -1,4 +1,5 @@
 using FintechCase;
+using FintechPaintTestCase.Models;
 
 namespace FintechPaintTestCase
 {
@@ -9,6 +10,8 @@ namespace FintechPaintTestCase
 
         private MenuOperations menuOperations;
         private DrawOperations drawOperations;
+        private FileOperations fileOperations;
+
         public Form1()
         {
             InitializeComponent();
@@ -16,6 +19,8 @@ namespace FintechPaintTestCase
             List<PictureBox> colorPictureBoxs = this.colorGroupBox.Controls.OfType<PictureBox>().ToList();
             menuOperations = new MenuOperations(shapePictureBoxs, colorPictureBoxs, selectionPB);
             drawOperations = new DrawOperations(panel1, menuOperations);
+            fileOperations = new FileOperations();
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -74,12 +79,29 @@ namespace FintechPaintTestCase
 
         private void deletePB_Click(object sender, EventArgs e)
         {
+
             drawOperations.deleteCurrentShape();
         }
 
         private void clearPB_Click(object sender, EventArgs e)
         {
             drawOperations.deleteAllShapes();
+        }
+
+        private void savePB_Click(object sender, EventArgs e)
+        {
+            fileOperations.saveShapes(drawOperations.getShapes());
+        }
+
+        private void uploadPB_Click(object sender, EventArgs e)
+        {
+            List<Shape> shapes = fileOperations.loadShapes();
+            if (shapes == null)
+            {
+                MessageBox.Show("Herhangi Bir Dosya Seçmediniz Veya Dosyanýn Ýçeriði Boþ");
+                return;
+            }
+            drawOperations.loadShapes(shapes);
         }
     }
 }
