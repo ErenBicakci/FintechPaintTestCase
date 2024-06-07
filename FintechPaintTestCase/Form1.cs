@@ -30,7 +30,7 @@ namespace FintechPaintTestCase
         private void clickShapePB(object sender, EventArgs e)
         {
             menuOperations.selectShape(((System.Windows.Forms.PictureBox)sender).Name);
-            drawOperations.removeCurrentBackground(); 
+            drawOperations.removeCurrentBackground();
         }
 
         private void clickColorPB(object sender, EventArgs e)
@@ -70,6 +70,16 @@ namespace FintechPaintTestCase
         private void selectionPB_Click(object sender, EventArgs e)
         {
             menuOperations.clickSelectionPictureBox();
+        }
+
+        private void deletePB_Click(object sender, EventArgs e)
+        {
+            drawOperations.deleteCurrentShape();
+        }
+
+        private void clearPB_Click(object sender, EventArgs e)
+        {
+            drawOperations.deleteAllShapes();
         }
     }
 }

@@ -1,35 +1,32 @@
 ﻿using FintechPaintTestCase.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FintechCase
 {
     internal class MenuOperations
     {
-        public Boolean selectionPBStatus = false;
-        private PictureBox selectionPB = null;
+
+        private PictureBox selectPB = null;
+        public Boolean selectPBStatus = false;
+
+
 
         private PictureBox lastSelectedShapePB = null;
         private PictureBox lastSelectedColorPB = null;
 
         private List<PictureBox> shapePictureBoxs;
         private List<PictureBox> colorPictureBoxs;
-        
-        
-        public Color lastColor = Color.White;
-        
 
-        public MenuOperations(List<PictureBox> shapePBs,List<PictureBox> colorPBs, PictureBox selectPB)
+
+        public Color lastColor = Color.White;
+
+
+        public MenuOperations(List<PictureBox> shapePBs, List<PictureBox> colorPBs, PictureBox selectPB)
         {
             shapePictureBoxs = shapePBs;
             colorPictureBoxs = colorPBs;
-            this.selectionPB = selectPB;
+            this.selectPB = selectPB;
         }
-       
+
 
         public Shape getLastShape()
         {
@@ -54,36 +51,34 @@ namespace FintechCase
             }
         }
 
+        private void removePreviousMenuSelections()
+        {
+            if (selectPBStatus)
+            {
+                selectPBStatus = false;
+                selectPB.Invalidate();
+                selectPB.Refresh();
+            }
+            if (lastSelectedShapePB != null)
+            {
+                lastSelectedShapePB.Invalidate();
+                lastSelectedShapePB.Refresh();
+                lastSelectedShapePB = null;
+            }
+        }
 
         public void selectShape(string pictureBoxName)
         {
-            selectionPBStatus = false;
-            selectionPB.Invalidate();
+            removePreviousMenuSelections();
+            lastSelectedShapePB = findShapePictureBoxByName(pictureBoxName);
+            drawBorder(lastSelectedShapePB);
 
-
-            PictureBox shapePB = findShapePictureBoxByName(pictureBoxName);
-            if (lastSelectedShapePB == null)
-            {
-                lastSelectedShapePB = shapePB;
-                drawBorder(shapePB);
-            }
-            else if (lastSelectedShapePB.Name != shapePB.Name)
-            {
-                lastSelectedShapePB.Invalidate();
-                drawBorder(shapePB);
-                lastSelectedShapePB = shapePB;
-            }
-            else
-            {
-                drawBorder(shapePB);
-            }
 
         }
 
         public void selectColor(string pictureBoxName)
         {
             PictureBox colorPB = findColorPictureBoxByName(pictureBoxName);
-
             if (lastSelectedColorPB == null)
             {
                 lastSelectedColorPB = colorPB;
@@ -101,14 +96,11 @@ namespace FintechCase
 
         public void clickSelectionPictureBox()
         {
-            selectionPBStatus = true;
-            drawBorder(selectionPB);
-            if (lastSelectedShapePB != null)
-            {
-                lastSelectedShapePB.Invalidate();
-
-            }
+            removePreviousMenuSelections();
+            selectPBStatus = true;
+            drawBorder(selectPB);
         }
+
 
 
         private void drawBorder(PictureBox pictureBox)
@@ -117,7 +109,7 @@ namespace FintechCase
 
             int borderThickness = 6;
             Color borderColor = Color.Gray;
-            Rectangle rect = new Rectangle(0, 0, pictureBox.Width , pictureBox.Height );
+            Rectangle rect = new Rectangle(0, 0, pictureBox.Width, pictureBox.Height);
             using (Pen pen = new Pen(borderColor, borderThickness))
             {
                 g.DrawRectangle(pen, rect);
@@ -125,13 +117,14 @@ namespace FintechCase
             g.Dispose();
         }
 
-       
 
-        private PictureBox findShapePictureBoxByName(string name) {
+
+        private PictureBox findShapePictureBoxByName(string name)
+        {
 
             foreach (var item in shapePictureBoxs)
             {
-                if(item.Name == name)
+                if (item.Name == name)
                 {
                     return item;
                 }
@@ -151,6 +144,6 @@ namespace FintechCase
             return null;
         }
 
-        
+
     }
 }

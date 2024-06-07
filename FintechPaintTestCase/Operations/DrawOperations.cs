@@ -27,13 +27,29 @@ namespace FintechCase
 
         public void changeSelectedShapeColor(Color color)
         {
-            if (currentShape != null && menuOperations.selectionPBStatus)
+            if (currentShape != null && menuOperations.selectPBStatus)
             {
 
                 currentShape.setColor(color);
                 drawingPanel.Invalidate();
             }
 
+        }
+
+        public void deleteCurrentShape()
+        {
+            if (currentShape != null && menuOperations.selectPBStatus)
+            {
+                shapes.Remove(currentShape);
+                currentShape = null;
+                drawingPanel.Invalidate();
+
+            }
+        }
+        public void deleteAllShapes()
+        {
+            shapes.Clear(); 
+            drawingPanel.Invalidate();
         }
 
         public void removeCurrentBackground()
@@ -73,7 +89,7 @@ namespace FintechCase
 
         public void drawingPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            if (menuOperations.selectionPBStatus)
+            if (menuOperations.selectPBStatus)
             {
                 if (currentShape != null)
                 {
@@ -114,7 +130,7 @@ namespace FintechCase
                 currentShape.mouseMoveDraw(e);
                 drawingPanel.Invalidate();
             }
-            else if (menuOperations.selectionPBStatus && isDrag == true)
+            else if (menuOperations.selectPBStatus && isDrag == true)
             {
                 if (currentShape != null)
                 {

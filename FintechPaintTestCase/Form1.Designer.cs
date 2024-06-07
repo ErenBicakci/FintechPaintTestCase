@@ -153,6 +153,7 @@
             clearPB.SizeMode = PictureBoxSizeMode.StretchImage;
             clearPB.TabIndex = 2;
             clearPB.TabStop = false;
+            clearPB.Click += clearPB_Click;
             // 
             // deletePB
             // 
@@ -163,6 +164,7 @@
             deletePB.SizeMode = PictureBoxSizeMode.StretchImage;
             deletePB.TabIndex = 1;
             deletePB.TabStop = false;
+            deletePB.Click += deletePB_Click;
             // 
             // colorGroupBox
             // 
