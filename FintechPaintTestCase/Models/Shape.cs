@@ -12,11 +12,14 @@ namespace FintechPaintTestCase.Models
         private Color color;
         public string name;
         private Point startPoint;
-        private Point lastPoint;
-
+        private Point lastSelectPoint;
+        
+        public bool isSelected = false;
         protected int shapeX { get; set; }
         protected int shapeY { get; set; }
         protected int shapeWidth { get; set; }
+
+        protected int shapeHeight { get; set; }
 
         public void setColor(Color color)
         {
@@ -37,45 +40,66 @@ namespace FintechPaintTestCase.Models
             startPoint.Y = y;
         }
 
-        public Point getLastPoint()
-        { return lastPoint; }
+        public Point getLastSelectPoint()
+        { return lastSelectPoint; }
 
-        public void setLastPoint(int x, int y)
+        public void setLastSelectPoint(int x, int y)
         {
-            lastPoint.X = x;
-            lastPoint.Y = y;
+            lastSelectPoint.X = x;
+            lastSelectPoint.Y = y;
         }
+
 
         public abstract void draw(PaintEventArgs e);
-        public abstract void mouseMove(MouseEventArgs e);
+        public abstract void mouseMoveDraw(MouseEventArgs e);
+        public abstract void mouseMoveSelect(MouseEventArgs e);
+
         protected abstract void drawingObjectConfig();
-        protected abstract void shapeConfig(int distance);
+        protected abstract void shapeConfig(int x, int y, int width,int height);
 
-
-        protected int getMaxWidth()
+        public bool inLocation(int x, int y)
         {
-            return (getMaxX() < getMaxY()) ? getMaxX() : getMaxY();
+            if ((shapeX <= x && shapeX + shapeWidth >= x) && (shapeY <= y && shapeY + shapeHeight >= y))
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        private int getMaxX() {
+        protected void drawBackground(PaintEventArgs e)
+        {
+            using (Brush brush = new SolidBrush(Color.FromArgb(128, 192, 192, 192)))
+            {
+                Rectangle rectangle = new Rectangle(shapeX - 5, shapeY - 5, shapeWidth + 10, shapeHeight + 10);
+                e.Graphics.FillRectangle(brush, rectangle);
 
-            int distance0 = this.getStartPoint().X;
-            int distance1 = Math.Abs(this.getStartPoint().X - 870);
+            }
+        }
+        protected int getPossibleMaxWidthAndHeight(int x,int y)
+        {
+            return (getPossibleMaxWidth(x) < getPossibleMaxHeight(y)) ? getPossibleMaxWidth(x) : getPossibleMaxHeight(y);
+        }
+
+        protected int getPossibleMaxWidth(int x) {
+
+            int distance0 = x;
+            int distance1 = Math.Abs(x - Form1.panelWidth);
 
             return (distance0 < distance1) ? distance0 : distance1;
         }
 
-        private int getMaxY()
+        protected int getPossibleMaxHeight(int y)
         {
 
-            int distance0 = this.getStartPoint().Y;
-            int distance1 = Math.Abs(this.getStartPoint().Y - 623);
+            int distance0 = y;
+            int distance1 = Math.Abs(y - Form1.panelHeight);
 
             return (distance0 < distance1) ? distance0 : distance1;
         }
 
         protected int getMaxDistanceToOrigin(int x, int y) {
-
+            
             int distance;
             if (Math.Abs(this.getStartPoint().X - x) > Math.Abs(this.getStartPoint().Y - y))
             {

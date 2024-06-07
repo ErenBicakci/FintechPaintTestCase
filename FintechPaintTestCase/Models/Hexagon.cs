@@ -18,31 +18,35 @@ namespace FintechPaintTestCase.Models
         }
         public override void draw(PaintEventArgs e)
         {
+            if (isSelected)
+            {
+                drawBackground(e);
+            }
             using (Brush brush = new SolidBrush(this.getColor()))
             {
                 e.Graphics.FillPolygon(brush, hexagonPoints);
             }
         }
 
-        public override void mouseMove(MouseEventArgs e)
+        public override void mouseMoveDraw(MouseEventArgs e)
         {
-            setLastPoint(e.X, e.Y);
             int distance = getMaxDistanceToOrigin(e.X, e.Y);
-            if (getMaxWidth() >= distance)
+            if (getPossibleMaxWidthAndHeight(getStartPoint().X, getStartPoint().Y) >= distance)
             {
-                shapeConfig(distance);
+                shapeConfig(getStartPoint().X - distance, getStartPoint().Y - distance, distance,distance);
             }
             else
             {
-                shapeConfig(getMaxWidth());
+                shapeConfig(getStartPoint().X - getPossibleMaxWidthAndHeight(getStartPoint().X, getStartPoint().Y), getStartPoint().Y - getPossibleMaxWidthAndHeight(getStartPoint().X, getStartPoint().Y), getPossibleMaxWidthAndHeight(getStartPoint().X, getStartPoint().Y), getPossibleMaxWidthAndHeight(getStartPoint().X, getStartPoint().Y));
             }
 
         }
-        protected override void shapeConfig(int distance)
+        protected override void shapeConfig(int x, int y, int width,int height)
         {
-            shapeX = getStartPoint().X - distance;
-            shapeY = getStartPoint().Y - distance;
-            shapeWidth = distance * 2;
+            shapeX = x;
+            shapeY = y;
+            shapeWidth = width * 2;
+            shapeHeight = height * 2;
             drawingObjectConfig();
         }
 
@@ -57,6 +61,21 @@ namespace FintechPaintTestCase.Models
                 hexagonPoints[i].Y = (int)(shapeY + (shapeWidth / 2) + shapeWidth / 2 * Math.Sin(angle_rad));
 
             }
+        }
+
+        public override void mouseMoveSelect(MouseEventArgs e)
+        {
+            int newXLocation = shapeX + (e.X - getLastSelectPoint().X);
+            int newYLocation = shapeY + (e.Y - getLastSelectPoint().Y);
+            if ((newXLocation >= 0 && newXLocation + shapeWidth <= Form1.panelWidth))
+            {
+                shapeConfig(newXLocation, shapeY, shapeWidth / 2, shapeHeight / 2);
+            }
+            if ((newYLocation >= 0 && newYLocation + shapeHeight <= Form1.panelHeight))
+            {
+                shapeConfig(shapeX, newYLocation, shapeWidth / 2, shapeHeight / 2);
+            }
+            setLastSelectPoint(e.X, e.Y);
         }
     }
 }

@@ -10,6 +10,9 @@ namespace FintechCase
 {
     internal class MenuOperations
     {
+        public Boolean selectionPBStatus = false;
+        private PictureBox selectionPB = null;
+
         private PictureBox lastSelectedShapePB = null;
         private PictureBox lastSelectedColorPB = null;
 
@@ -20,10 +23,11 @@ namespace FintechCase
         public Color lastColor = Color.White;
         
 
-        public MenuOperations(List<PictureBox> shapePBs,List<PictureBox> colorPBs)
+        public MenuOperations(List<PictureBox> shapePBs,List<PictureBox> colorPBs, PictureBox selectPB)
         {
             shapePictureBoxs = shapePBs;
             colorPictureBoxs = colorPBs;
+            this.selectionPB = selectPB;
         }
        
 
@@ -53,6 +57,9 @@ namespace FintechCase
 
         public void selectShape(string pictureBoxName)
         {
+            selectionPBStatus = false;
+            selectionPB.Invalidate();
+
 
             PictureBox shapePB = findShapePictureBoxByName(pictureBoxName);
             if (lastSelectedShapePB == null)
@@ -90,6 +97,17 @@ namespace FintechCase
 
             }
             lastColor = colorPB.BackColor;
+        }
+
+        public void clickSelectionPictureBox()
+        {
+            selectionPBStatus = true;
+            drawBorder(selectionPB);
+            if (lastSelectedShapePB != null)
+            {
+                lastSelectedShapePB.Invalidate();
+
+            }
         }
 
 

@@ -14,6 +14,10 @@ namespace FintechPaintTestCase.Models
         }
         public override void draw(PaintEventArgs e)
         {
+            if (isSelected)
+            {
+                drawBackground(e);
+            }
             using (Brush brush = new SolidBrush(this.getColor()))
             {
 
@@ -21,25 +25,41 @@ namespace FintechPaintTestCase.Models
             }
         }
 
-        public override void mouseMove(MouseEventArgs e)
+        public override void mouseMoveDraw(MouseEventArgs e)
         {
-            setLastPoint(e.X, e.Y);
-            int distance = getMaxDistanceToOrigin(e.X, e.Y);
-            if (getMaxWidth() >= distance)
+            int width = Math.Abs(getStartPoint().X - e.X);
+            int xLocation = getStartPoint().X - width;
+
+            if (xLocation >= 0 && xLocation + width*2 <= Form1.panelWidth)
             {
-                shapeConfig(distance);
+                shapeConfig(xLocation, shapeY, width, shapeHeight/2);
+
             }
             else
             {
-                shapeConfig(getMaxWidth());
+                shapeConfig(shapeX+shapeWidth/2-getPossibleMaxWidth(getStartPoint().X),shapeY, getPossibleMaxWidth(getStartPoint().X),shapeHeight/2);
+            }
+            int height = Math.Abs(getStartPoint().Y - e.Y);
+
+            int yLocation = getStartPoint().Y - height;
+            if (yLocation >= 0 && yLocation + height*2 <= Form1.panelHeight)
+            {
+                shapeConfig(shapeX, yLocation, shapeWidth/2,height);
+
+            }
+            else
+            {
+                shapeConfig(shapeX, shapeY+shapeHeight/2-getPossibleMaxHeight(getStartPoint().Y), shapeWidth/2, getPossibleMaxHeight(getStartPoint().Y));
+
             }
 
         }
-        protected override void shapeConfig(int distance)
+        protected override void shapeConfig(int x, int y, int width,int height)
         {
-            shapeX = getStartPoint().X - distance;
-            shapeY = getStartPoint().Y - distance;
-            shapeWidth = distance * 2;
+            shapeX = x;
+            shapeY = y;
+            shapeWidth = width * 2;
+            shapeHeight = height * 2;
             drawingObjectConfig();
         }
 
@@ -48,7 +68,22 @@ namespace FintechPaintTestCase.Models
             rectangle.X = shapeX;
             rectangle.Width = shapeWidth;
             rectangle.Y = shapeY;
-            rectangle.Height = shapeWidth;
+            rectangle.Height = shapeHeight;
+        }
+
+        public override void mouseMoveSelect(MouseEventArgs e)
+        {
+            int newXLocation = shapeX + (e.X - getLastSelectPoint().X);
+            int newYLocation = shapeY + (e.Y - getLastSelectPoint().Y);
+            if ((newXLocation >= 0 && newXLocation + shapeWidth <= Form1.panelWidth))
+            {
+                shapeConfig(newXLocation, shapeY, shapeWidth / 2, shapeHeight/2);
+            }
+            if ((newYLocation >= 0 && newYLocation + shapeHeight <= Form1.panelHeight))
+            {
+                shapeConfig(shapeX, newYLocation, shapeWidth / 2, shapeHeight/2);
+            }
+            setLastSelectPoint(e.X, e.Y);
         }
     }
 }

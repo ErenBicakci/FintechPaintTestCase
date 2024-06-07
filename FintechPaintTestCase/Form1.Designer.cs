@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PictureBox selectPB;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             groupBox1 = new GroupBox();
             groupBox3 = new GroupBox();
             uploadPB = new PictureBox();
             savePB = new PictureBox();
             groupBox2 = new GroupBox();
+            selectionPB = new PictureBox();
             clearPB = new PictureBox();
             deletePB = new PictureBox();
             colorGroupBox = new GroupBox();
@@ -53,13 +53,12 @@
             trianglePB = new PictureBox();
             squarePB = new PictureBox();
             panel1 = new Panel();
-            selectPB = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)selectPB).BeginInit();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)uploadPB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)savePB).BeginInit();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)selectionPB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clearPB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)deletePB).BeginInit();
             colorGroupBox.SuspendLayout();
@@ -78,16 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)trianglePB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)squarePB).BeginInit();
             SuspendLayout();
-            // 
-            // selectPB
-            // 
-            selectPB.Image = Properties.Resources._84_847933_free_icons_png_mouse_click_icon_png_clipart;
-            selectPB.Location = new Point(3, 19);
-            selectPB.Name = "selectPB";
-            selectPB.Size = new Size(55, 55);
-            selectPB.SizeMode = PictureBoxSizeMode.StretchImage;
-            selectPB.TabIndex = 0;
-            selectPB.TabStop = false;
             // 
             // groupBox1
             // 
@@ -134,15 +123,26 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(selectionPB);
             groupBox2.Controls.Add(clearPB);
             groupBox2.Controls.Add(deletePB);
-            groupBox2.Controls.Add(selectPB);
             groupBox2.Location = new Point(6, 404);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(188, 86);
             groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "ŞEKİL İŞLEMLERİ";
+            // 
+            // selectionPB
+            // 
+            selectionPB.Image = (Image)resources.GetObject("selectionPB.Image");
+            selectionPB.Location = new Point(6, 19);
+            selectionPB.Name = "selectionPB";
+            selectionPB.Size = new Size(55, 55);
+            selectionPB.SizeMode = PictureBoxSizeMode.StretchImage;
+            selectionPB.TabIndex = 3;
+            selectionPB.TabStop = false;
+            selectionPB.Click += selectionPB_Click;
             // 
             // clearPB
             // 
@@ -351,12 +351,13 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Paint Case";
-            ((System.ComponentModel.ISupportInitialize)selectPB).EndInit();
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)uploadPB).EndInit();
             ((System.ComponentModel.ISupportInitialize)savePB).EndInit();
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)selectionPB).EndInit();
             ((System.ComponentModel.ISupportInitialize)clearPB).EndInit();
             ((System.ComponentModel.ISupportInitialize)deletePB).EndInit();
             colorGroupBox.ResumeLayout(false);
@@ -396,12 +397,12 @@
         private PictureBox bluePB;
         private PictureBox redPB;
         private GroupBox groupBox2;
-        private PictureBox selectPB;
         private GroupBox groupBox3;
         private PictureBox uploadPB;
         private PictureBox savePB;
         private PictureBox clearPB;
         private PictureBox deletePB;
         private Panel panel1;
+        private PictureBox selectionPB;
     }
 }
