@@ -73,7 +73,6 @@ namespace FintechPaintTestCase.Models
             trianglePoints[1].Y = shapeY + shapeHeight;
             trianglePoints[2].Y = shapeY + shapeHeight;
         }
-
         public override void mouseMoveSelect(MouseEventArgs e)
         {
             int newXLocation = shapeX + (e.X - getLastSelectPoint().X);

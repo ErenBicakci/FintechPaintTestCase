@@ -24,10 +24,7 @@ namespace FintechCase
                 File.WriteAllText(filePath, shapesJSON.ToString());
                 MessageBox.Show("Dosya başarıyla kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
-
-
 
         public List<Shape> loadShapes()
         {

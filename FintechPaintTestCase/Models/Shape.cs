@@ -51,13 +51,35 @@ namespace FintechPaintTestCase.Models
         }
 
 
+        /// <summary>
+        /// Draw shape
+        /// </summary>
         public abstract void draw(PaintEventArgs e);
+
+
+        /// <summary>
+        /// Mouse movement operations while in the draw process
+        /// </summary>
         public abstract void mouseMoveDraw(MouseEventArgs e);
+
+        /// <summary>
+        /// Mouse movement operations while in the selection process
+        /// </summary>
         public abstract void mouseMoveSelect(MouseEventArgs e);
 
+        /// <summary>
+        /// Configures the properties of the object to be drawn on the screen within the shape.
+        /// </summary>
         protected abstract void drawingObjectConfig();
+
+        /// <summary>
+        /// Configure the properties of the shape
+        /// </summary>
         protected abstract void shapeConfig(int x, int y, int width,int height);
 
+        /// <summary>
+        /// Checks whether a shape exists within the specified location.
+        /// </summary>
         public bool inLocation(int x, int y)
         {
             if ((shapeX <= x && shapeX + shapeWidth >= x) && (shapeY <= y && shapeY + shapeHeight >= y))
@@ -67,7 +89,9 @@ namespace FintechPaintTestCase.Models
 
             return false;
         }
-
+        /// <summary>
+        /// Drawing a background if the shape is selected
+        /// </summary>
         protected void drawBackground(PaintEventArgs e)
         {
             using (Brush brush = new SolidBrush(Color.FromArgb(128, 192, 192, 192)))
@@ -77,11 +101,18 @@ namespace FintechPaintTestCase.Models
 
             }
         }
+
+        /// <summary>
+        /// The distance of the shape to the nearest edge of the screen
+        /// </summary>
         protected int getPossibleMaxWidthAndHeight(int x,int y)
         {
             return (getPossibleMaxWidth(x) < getPossibleMaxHeight(y)) ? getPossibleMaxWidth(x) : getPossibleMaxHeight(y);
         }
 
+        /// <summary>
+        /// The distance of the shape to the nearest horizontal edge of the screen
+        /// </summary>
         protected int getPossibleMaxWidth(int x) {
 
             int distance0 = x;
@@ -90,6 +121,9 @@ namespace FintechPaintTestCase.Models
             return (distance0 < distance1) ? distance0 : distance1;
         }
 
+        /// <summary>
+        /// The distance of the shape to the nearest vertical edge of the screen
+        /// </summary>
         protected int getPossibleMaxHeight(int y)
         {
 
@@ -99,6 +133,9 @@ namespace FintechPaintTestCase.Models
             return (distance0 < distance1) ? distance0 : distance1;
         }
 
+        /// <summary>
+        /// The longest distance between the starting position of the shape and the specified position
+        /// </summary>
         protected int getMaxDistanceToOrigin(int x, int y) {
             
             int distance;
@@ -112,7 +149,9 @@ namespace FintechPaintTestCase.Models
             }
             return distance;
         }
-
+        /// <summary>
+        /// Properties of the shape in json format
+        /// </summary>
         public JsonObject getJSONInfos()
         {
             JsonObject jsonObject = new JsonObject();

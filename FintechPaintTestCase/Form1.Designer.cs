@@ -94,9 +94,9 @@
             // 
             groupBox3.Controls.Add(uploadPB);
             groupBox3.Controls.Add(savePB);
-            groupBox3.Location = new Point(9, 496);
+            groupBox3.Location = new Point(6, 525);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(188, 86);
+            groupBox3.Size = new Size(188, 82);
             groupBox3.TabIndex = 3;
             groupBox3.TabStop = false;
             groupBox3.Text = "DOSYA İŞLEMLERİ";
@@ -128,7 +128,7 @@
             groupBox2.Controls.Add(selectionPB);
             groupBox2.Controls.Add(clearPB);
             groupBox2.Controls.Add(deletePB);
-            groupBox2.Location = new Point(6, 404);
+            groupBox2.Location = new Point(6, 433);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(188, 86);
             groupBox2.TabIndex = 2;
@@ -179,9 +179,9 @@
             colorGroupBox.Controls.Add(greenPB);
             colorGroupBox.Controls.Add(bluePB);
             colorGroupBox.Controls.Add(redPB);
-            colorGroupBox.Location = new Point(6, 203);
+            colorGroupBox.Location = new Point(6, 221);
             colorGroupBox.Name = "colorGroupBox";
-            colorGroupBox.Size = new Size(188, 195);
+            colorGroupBox.Size = new Size(188, 206);
             colorGroupBox.TabIndex = 1;
             colorGroupBox.TabStop = false;
             colorGroupBox.Text = "RENK";
@@ -189,7 +189,7 @@
             // whitePB
             // 
             whitePB.BackColor = Color.White;
-            whitePB.Location = new Point(127, 134);
+            whitePB.Location = new Point(128, 145);
             whitePB.Name = "whitePB";
             whitePB.Size = new Size(55, 55);
             whitePB.TabIndex = 8;
@@ -199,7 +199,7 @@
             // brownPB
             // 
             brownPB.BackColor = Color.Brown;
-            brownPB.Location = new Point(66, 134);
+            brownPB.Location = new Point(67, 145);
             brownPB.Name = "brownPB";
             brownPB.Size = new Size(55, 55);
             brownPB.TabIndex = 7;
@@ -209,7 +209,7 @@
             // purplePB
             // 
             purplePB.BackColor = Color.Purple;
-            purplePB.Location = new Point(6, 134);
+            purplePB.Location = new Point(5, 145);
             purplePB.Name = "purplePB";
             purplePB.Size = new Size(55, 55);
             purplePB.TabIndex = 6;
@@ -219,7 +219,7 @@
             // yellowPB
             // 
             yellowPB.BackColor = Color.Yellow;
-            yellowPB.Location = new Point(127, 74);
+            yellowPB.Location = new Point(128, 84);
             yellowPB.Name = "yellowPB";
             yellowPB.Size = new Size(55, 55);
             yellowPB.TabIndex = 5;
@@ -229,7 +229,7 @@
             // blackPB
             // 
             blackPB.BackColor = Color.Black;
-            blackPB.Location = new Point(66, 73);
+            blackPB.Location = new Point(66, 84);
             blackPB.Name = "blackPB";
             blackPB.Size = new Size(55, 55);
             blackPB.TabIndex = 4;
@@ -239,7 +239,7 @@
             // orangePB
             // 
             orangePB.BackColor = Color.Orange;
-            orangePB.Location = new Point(6, 73);
+            orangePB.Location = new Point(5, 84);
             orangePB.Name = "orangePB";
             orangePB.Size = new Size(55, 55);
             orangePB.TabIndex = 3;
@@ -249,7 +249,7 @@
             // greenPB
             // 
             greenPB.BackColor = Color.Green;
-            greenPB.Location = new Point(127, 13);
+            greenPB.Location = new Point(128, 22);
             greenPB.Name = "greenPB";
             greenPB.Size = new Size(55, 55);
             greenPB.TabIndex = 2;
@@ -259,7 +259,7 @@
             // bluePB
             // 
             bluePB.BackColor = Color.Blue;
-            bluePB.Location = new Point(66, 13);
+            bluePB.Location = new Point(66, 22);
             bluePB.Name = "bluePB";
             bluePB.Size = new Size(55, 55);
             bluePB.TabIndex = 1;
@@ -269,7 +269,7 @@
             // redPB
             // 
             redPB.BackColor = Color.Red;
-            redPB.Location = new Point(6, 13);
+            redPB.Location = new Point(6, 22);
             redPB.Name = "redPB";
             redPB.Size = new Size(55, 55);
             redPB.TabIndex = 0;
@@ -284,7 +284,7 @@
             shapeGroupBox.Controls.Add(squarePB);
             shapeGroupBox.Location = new Point(6, 9);
             shapeGroupBox.Name = "shapeGroupBox";
-            shapeGroupBox.Size = new Size(188, 188);
+            shapeGroupBox.Size = new Size(188, 206);
             shapeGroupBox.TabIndex = 0;
             shapeGroupBox.TabStop = false;
             shapeGroupBox.Text = "ŞEKİL";
@@ -292,7 +292,7 @@
             // hexagonPB
             // 
             hexagonPB.Image = Properties.Resources.Altıgen;
-            hexagonPB.Location = new Point(101, 100);
+            hexagonPB.Location = new Point(101, 119);
             hexagonPB.Name = "hexagonPB";
             hexagonPB.Size = new Size(81, 81);
             hexagonPB.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -303,7 +303,7 @@
             // circlePB
             // 
             circlePB.Image = Properties.Resources.Yuvarlak;
-            circlePB.Location = new Point(6, 100);
+            circlePB.Location = new Point(6, 119);
             circlePB.Name = "circlePB";
             circlePB.Size = new Size(81, 81);
             circlePB.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -314,7 +314,7 @@
             // trianglePB
             // 
             trianglePB.Image = Properties.Resources.Kare;
-            trianglePB.Location = new Point(101, 13);
+            trianglePB.Location = new Point(101, 32);
             trianglePB.Name = "trianglePB";
             trianglePB.Size = new Size(81, 81);
             trianglePB.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -325,7 +325,7 @@
             // squarePB
             // 
             squarePB.Image = Properties.Resources.KareR;
-            squarePB.Location = new Point(6, 13);
+            squarePB.Location = new Point(6, 32);
             squarePB.Name = "squarePB";
             squarePB.Size = new Size(81, 81);
             squarePB.SizeMode = PictureBoxSizeMode.StretchImage;

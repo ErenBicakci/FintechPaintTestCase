@@ -123,9 +123,9 @@ namespace FintechCase
         {
             Graphics g = pictureBox.CreateGraphics();
 
-            int borderThickness = 6;
-            Color borderColor = Color.Gray;
-            Rectangle rect = new Rectangle(0, 0, pictureBox.Width, pictureBox.Height);
+            int borderThickness = 7;
+            Color borderColor = Color.Pink;
+            Rectangle rect = new Rectangle(0, 0, pictureBox.Width-1, pictureBox.Height-1);
             using (Pen pen = new Pen(borderColor, borderThickness))
             {
                 g.DrawRectangle(pen, rect);
